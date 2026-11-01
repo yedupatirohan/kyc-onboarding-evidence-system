@@ -1,0 +1,25 @@
+﻿# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/.venv/
+.venv/
+
+# Secrets and local config
+.env
+
+# Databases and generated output (regenerate with the generator)
+*.db
+*.sqlite3
+data/output/*
+!data/output/.gitkeep
+
+# Node / frontend
+node_modules/
+frontend/dist/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
