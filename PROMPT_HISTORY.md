@@ -1,16 +1,13 @@
 ﻿# Prompt History
 
 Prompts submitted to AI tools during this project, recorded verbatim.
-Responses are not included. Nothing here is reconstructed after the fact.
+Responses are not included. Entries are appended in the order they were sent.
+Each entry's logged date is when it was copied into this file.
 
-## Stage 1: Requirements and Architecture
-### Prompt 1 (Claude)
-<paste your exact first prompt here>
 
-## Stage 2: Environment Setup
-### Prompt 2 (Claude)
-<paste your Python/PATH messages exactly, including terminal output you pasted>
+### Prompt 1 | 1 Requirements and architecture | Claude | logged 2026-11-02 08:37
 
-## Stage 3: Project Scaffolding
-### Prompt 3 (Claude)
-<paste your messages from this stage exactly>
+``````text
+.\scripts\log_prompt.ps1 -Stage "1 Requirements and architecture"
+``````
+
