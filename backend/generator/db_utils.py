@@ -22,3 +22,21 @@ def clear_generated_data(session: Session) -> dict[str, int]:
         deleted[table.name] = result.rowcount
     session.commit()
     return deleted
+
+
+def clear_tables(session: Session, names: list[str]) -> dict[str, int]:
+    """Delete rows from only the named tables, children first.
+
+    Used by a generator step that must be re-runnable without touching
+    the steps before it. Unknown table names raise ValueError.
+    """
+    known = {t.name for t in Base.metadata.sorted_tables}
+    unknown = set(names) - known
+    if unknown:
+        raise ValueError(f"Unknown tables: {sorted(unknown)}")
+    deleted: dict[str, int] = {}
+    for table in reversed(Base.metadata.sorted_tables):
+        if table.name in names:
+            deleted[table.name] = session.execute(delete(table)).rowcount
+    session.commit()
+    return deleted

@@ -41,8 +41,8 @@ def main() -> None:
                 continue
             count, digest = table_digest(connection, table)
             overall.update(f"{table}:{digest}".encode("utf-8"))
-            print(f"{table:<22} rows={count:<6} sha256={digest[:16]}...")
-        print(f"{'OVERALL':<22} sha256={overall.hexdigest()}")
+            print(f"{table:<26} rows={count:<6} sha256={digest[:16]}...")
+        print(f"{'OVERALL':<26} sha256={overall.hexdigest()}")
 
 
 if __name__ == "__main__":
