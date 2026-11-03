@@ -2,11 +2,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import businesses, customers, documents, meta
+from app.routers import alerts, audit, businesses, customers, documents, exceptions, meta, reviews
 
 app = FastAPI(
     title="YottaFlex KYC Onboarding Evidence System",
-    version="0.5.0",
+    version="0.5.1",
     description="Read API over the KYC evidence database. All rules (completeness, expiry, risk, "
                 "anomalies) come from app/services, the same code the generator and validators use.",
 )
@@ -18,5 +18,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-for module in (meta, customers, documents, businesses):
+for module in (meta, customers, documents, businesses, reviews, alerts, exceptions, audit):
     app.include_router(module.router, prefix="/api")

@@ -1,4 +1,4 @@
-"""Pagination and query helpers shared by every list endpoint."""
+﻿"""Pagination and query helpers shared by every list endpoint."""
 from math import ceil
 from typing import Literal
 
@@ -33,3 +33,13 @@ def text_match(column, term: str):
     """Case-insensitive 'contains' that treats % and _ in the term literally."""
     from sqlalchemy import func
     return func.lower(column).contains(term.lower(), autoescape=True)
+
+
+def day_start(d):
+    from datetime import datetime, time
+    return datetime.combine(d, time.min)
+
+
+def next_day_start(d):
+    from datetime import datetime, time, timedelta
+    return datetime.combine(d + timedelta(days=1), time.min)
