@@ -7,6 +7,7 @@ from sqlalchemy.pool import StaticPool
 
 import app.models  # noqa: F401
 from app.database import Base, get_db
+from app.deps import get_output_dir
 from app.main import app
 from generator.generate import run_pipeline
 
@@ -14,11 +15,17 @@ SMALL = dict(n_customers=900, n_business=120, n_documents=2700, n_reviews=250, n
 
 
 @pytest.fixture(scope="session")
-def engine(tmp_path_factory):
+def out_dir(tmp_path_factory):
+    """Where the pipeline writes ground_truth.* and validation_report.* for these tests."""
+    return tmp_path_factory.mktemp("api_out")
+
+
+@pytest.fixture(scope="session")
+def engine(out_dir):
     eng = create_engine("sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool)
     Base.metadata.create_all(eng)
     with Session(eng) as session:
-        run_pipeline(session, out_dir=tmp_path_factory.mktemp("api_out"), log=lambda *_: None, **SMALL)
+        run_pipeline(session, out_dir=out_dir, log=lambda *_: None, **SMALL)
     return eng
 
 
@@ -29,7 +36,7 @@ def db(engine):
 
 
 @pytest.fixture(scope="session")
-def client(engine):
+def client(engine, out_dir):
     factory = sessionmaker(bind=engine, autoflush=False)
 
     def override():
@@ -40,6 +47,7 @@ def client(engine):
             session.close()
 
     app.dependency_overrides[get_db] = override
+    app.dependency_overrides[get_output_dir] = lambda: out_dir
     with TestClient(app) as c:
         yield c
     app.dependency_overrides.clear()
