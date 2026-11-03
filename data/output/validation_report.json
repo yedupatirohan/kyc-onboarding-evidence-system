@@ -1,0 +1,439 @@
+{
+  "anomaly_detection_summary": {
+    "findings_by_issue_type": {
+      "APPROVED_MISSING_EVIDENCE": 60,
+      "DUPLICATE_DOCUMENT": 120,
+      "EXPIRED_MARKED_VALID": 60,
+      "OWNERSHIP_OVER_100": 60,
+      "REVIEW_CLOSED_NO_RESOLUTION": 60
+    },
+    "findings_by_severity": {
+      "CRITICAL": 60,
+      "HIGH": 240,
+      "MEDIUM": 60
+    },
+    "total_findings": 360
+  },
+  "as_of_date": "2026-10-22",
+  "baseline": {
+    "anomaly_findings": 0,
+    "checks_with_violations": 0,
+    "clean": true,
+    "failing_checks": []
+  },
+  "completeness_distribution_by_customer_status": {
+    "APPROVED": {
+      "0": 0,
+      "1-25": 0,
+      "100": 4000,
+      "26-50": 40,
+      "51-75": 20,
+      "76-99": 0
+    },
+    "CLOSED": {
+      "0": 27,
+      "1-25": 9,
+      "100": 83,
+      "26-50": 97,
+      "51-75": 76,
+      "76-99": 8
+    },
+    "PROSPECT": {
+      "0": 1280,
+      "1-25": 67,
+      "100": 1,
+      "26-50": 51,
+      "51-75": 1,
+      "76-99": 0
+    },
+    "SUSPENDED": {
+      "0": 58,
+      "1-25": 8,
+      "100": 23,
+      "26-50": 121,
+      "51-75": 84,
+      "76-99": 6
+    },
+    "UNDER_REVIEW": {
+      "0": 999,
+      "1-25": 201,
+      "100": 40,
+      "26-50": 603,
+      "51-75": 95,
+      "76-99": 2
+    }
+  },
+  "dataset_row_counts": {
+    "alert": 2908,
+    "audit_event": 63903,
+    "beneficial_owner": 2205,
+    "business_profile": 1000,
+    "customer": 8000,
+    "customer_type": 4,
+    "customer_type_requirement": 29,
+    "document": 20000,
+    "document_requirement_link": 20133,
+    "kyc_requirement": 15,
+    "ownership_link": 2325,
+    "review_case": 3000,
+    "risk_rating": 9030,
+    "verification": 24362
+  },
+  "dataset_sizes_requested": {
+    "anomalies_per_scenario": 60,
+    "business": 1000,
+    "controls_per_scenario": 40,
+    "customers": 8000,
+    "documents": 20000,
+    "reviews": 3000
+  },
+  "environment": {
+    "Faker": "40.44.0",
+    "SQLAlchemy": "2.1.6",
+    "fastapi": "0.162.0",
+    "pydantic": "2.14.2",
+    "python": "3.12.4"
+  },
+  "evaluation_against_ground_truth": {
+    "overall": {
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positives": 360
+    },
+    "per_issue_type": {
+      "APPROVED_MISSING_EVIDENCE": {
+        "controls_wrongly_flagged": 0,
+        "detected": 60,
+        "f1": 1.0,
+        "false_alarms": [],
+        "false_negatives": 0,
+        "false_positives": 0,
+        "labelled_anomalies": 60,
+        "missed": [],
+        "near_miss_controls": 40,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positives": 60
+      },
+      "DUPLICATE_DOCUMENT": {
+        "controls_wrongly_flagged": 0,
+        "detected": 120,
+        "f1": 1.0,
+        "false_alarms": [],
+        "false_negatives": 0,
+        "false_positives": 0,
+        "labelled_anomalies": 120,
+        "missed": [],
+        "near_miss_controls": 80,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positives": 120
+      },
+      "EXPIRED_MARKED_VALID": {
+        "controls_wrongly_flagged": 0,
+        "detected": 60,
+        "f1": 1.0,
+        "false_alarms": [],
+        "false_negatives": 0,
+        "false_positives": 0,
+        "labelled_anomalies": 60,
+        "missed": [],
+        "near_miss_controls": 29,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positives": 60
+      },
+      "OWNERSHIP_OVER_100": {
+        "controls_wrongly_flagged": 0,
+        "detected": 60,
+        "f1": 1.0,
+        "false_alarms": [],
+        "false_negatives": 0,
+        "false_positives": 0,
+        "labelled_anomalies": 60,
+        "missed": [],
+        "near_miss_controls": 40,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positives": 60
+      },
+      "REVIEW_CLOSED_NO_RESOLUTION": {
+        "controls_wrongly_flagged": 0,
+        "detected": 60,
+        "f1": 1.0,
+        "false_alarms": [],
+        "false_negatives": 0,
+        "false_positives": 0,
+        "labelled_anomalies": 60,
+        "missed": [],
+        "near_miss_controls": 40,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positives": 60
+      }
+    }
+  },
+  "expiry_statistics": {
+    "alerts_by_status": {
+      "ACKNOWLEDGED": 496,
+      "OPEN": 2150,
+      "RESOLVED": 262
+    },
+    "alerts_by_type": {
+      "APPROVED_MISSING_EVIDENCE": 60,
+      "DOCUMENT_EXPIRED": 697,
+      "DUPLICATE_DOCUMENT": 120,
+      "EXPIRED_MARKED_VALID": 60,
+      "EXPIRY_UPCOMING": 924,
+      "OWNERSHIP_OVER_100": 60,
+      "REVIEW_CLOSED_NO_RESOLUTION": 60,
+      "REVIEW_OVERDUE": 927
+    },
+    "documents_by_status": {
+      "EXPIRED": 637,
+      "REJECTED": 1251,
+      "SUBMITTED": 1203,
+      "SUPERSEDED": 192,
+      "VERIFIED": 16717
+    },
+    "expired_but_marked_verified": 60,
+    "expiring_within_lead_times": {
+      "30_days": 288,
+      "60_days": 306,
+      "90_days": 330
+    },
+    "verified_and_unexpired": 12351
+  },
+  "reproducibility_checksums": {
+    "baseline_overall": "c1c0fb18a27fda9843ac445e023e255289edd8f6bc923539f070bfa866d56c7a",
+    "baseline_tables": {
+      "alert": {
+        "rows": 2548,
+        "sha256": "73eb28c5c8e1c6221940eb377ff60b71d367f47ddbfffd385c5563e090343319"
+      },
+      "audit_event": {
+        "rows": 63543,
+        "sha256": "105647bd78a11259124338c93b031e39b60a4cfec643fe3770fa0134c1b92c31"
+      },
+      "beneficial_owner": {
+        "rows": 2205,
+        "sha256": "4b1b6d9f72ab0213980d94e3b0318e784f0ef8c937da84a685919598196aa7f2"
+      },
+      "business_profile": {
+        "rows": 1000,
+        "sha256": "7b64d6402bf8a42a64ac93f3484548609d791ae96eb1a16bf7b5bea39b2d3382"
+      },
+      "customer": {
+        "rows": 8000,
+        "sha256": "efe398ef8afe6ec4d5c7cd516b2d1635b9ede85869da62bd093752bfeb6e1580"
+      },
+      "document": {
+        "rows": 20000,
+        "sha256": "0a548684a77bed8566b442a50fa61317e6f9361ae64b901b9fae04dbec3febf4"
+      },
+      "document_requirement_link": {
+        "rows": 20133,
+        "sha256": "44c6a3bd6b1ff958226f5dc7f12103f51d9740665108a4bce67c50ec5d1decc5"
+      },
+      "ownership_link": {
+        "rows": 2325,
+        "sha256": "c9a5345d789913320cd8ab8482e75a952389c2b499e2a9f674ce88ffbe10e42e"
+      },
+      "review_case": {
+        "rows": 3000,
+        "sha256": "215fb43d149e6f0066b9f6a681699a3f7f3ea04591d4ad1a16ef6a59e0cc3b82"
+      },
+      "risk_rating": {
+        "rows": 9030,
+        "sha256": "2f38d9c001d2e4463c037bd6d3022373176c6d4b523401b0c1e9c9d2f81fc16a"
+      },
+      "verification": {
+        "rows": 24362,
+        "sha256": "66b75e3a4d8d694a8b473282d63dea45127c6968624d63099fd32448066f6fb3"
+      }
+    },
+    "final_overall": "4b1680489c3b8e2bb58aca693d878cd5930125029d2f24890876bd917c627b0b",
+    "final_tables": {
+      "alert": {
+        "rows": 2908,
+        "sha256": "9638342863a892d60a7d066bb277c0ddb1d0a7694709008ee061552bcfc87bcd"
+      },
+      "audit_event": {
+        "rows": 63903,
+        "sha256": "b211e24a11acc102b73ab8a00c8c87900a16099a9b85580391686874e7af3f58"
+      },
+      "beneficial_owner": {
+        "rows": 2205,
+        "sha256": "4b1b6d9f72ab0213980d94e3b0318e784f0ef8c937da84a685919598196aa7f2"
+      },
+      "business_profile": {
+        "rows": 1000,
+        "sha256": "7b64d6402bf8a42a64ac93f3484548609d791ae96eb1a16bf7b5bea39b2d3382"
+      },
+      "customer": {
+        "rows": 8000,
+        "sha256": "b2443e223c0e82d69d2b214ca1ee55cb443a7c838ce3b84858174029d97cebea"
+      },
+      "document": {
+        "rows": 20000,
+        "sha256": "61aafa0b8a77ab846fd43b189665528cda5a39c5566d7671c8478daa41b1283a"
+      },
+      "document_requirement_link": {
+        "rows": 20133,
+        "sha256": "44c6a3bd6b1ff958226f5dc7f12103f51d9740665108a4bce67c50ec5d1decc5"
+      },
+      "ownership_link": {
+        "rows": 2325,
+        "sha256": "ee9976ee3399b1838e4979721f9ac25be80076ae91832f45ca197b74e75d4e89"
+      },
+      "review_case": {
+        "rows": 3000,
+        "sha256": "59da9cb7eddf55783a3b89ecba7fabe14330beface6a6af991f301e0a0db9cf7"
+      },
+      "risk_rating": {
+        "rows": 9030,
+        "sha256": "2f38d9c001d2e4463c037bd6d3022373176c6d4b523401b0c1e9c9d2f81fc16a"
+      },
+      "verification": {
+        "rows": 24362,
+        "sha256": "66b75e3a4d8d694a8b473282d63dea45127c6968624d63099fd32448066f6fb3"
+      }
+    },
+    "ground_truth": {
+      "csv_sha256": "e5f8da79aa04af32fbb916100af51a77b2451a3060288c08a027d7a9c80363a3",
+      "json_sha256": "dfd612a6541e58764b520123f4d4b219cc6f4df16b41b24f76245f9bad50d129"
+    }
+  },
+  "review_statistics": {
+    "overdue_by_customer_risk": {
+      "HIGH": 186,
+      "LOW": 152,
+      "MEDIUM": 589
+    },
+    "review_frequency_months": {
+      "HIGH": 6,
+      "LOW": 24,
+      "MEDIUM": 12
+    },
+    "reviews_by_status": {
+      "CLOSED": 1368,
+      "IN_PROGRESS": 220,
+      "OVERDUE": 927,
+      "SCHEDULED": 485
+    }
+  },
+  "seed": 20261022,
+  "validation_checks_after_injection": [
+    {
+      "description": "No duplicate primary keys in any table",
+      "name": "primary_key_uniqueness",
+      "samples": [],
+      "violations": 0
+    },
+    {
+      "description": "Every foreign key points at an existing parent row",
+      "name": "foreign_key_integrity",
+      "samples": [],
+      "violations": 0
+    },
+    {
+      "description": "All status/level/type columns hold allowed values only",
+      "name": "allowed_enum_values",
+      "samples": [],
+      "violations": 0
+    },
+    {
+      "description": "All identifiers follow the required formats",
+      "name": "id_format",
+      "samples": [],
+      "violations": 0
+    },
+    {
+      "description": "Dates are in a possible order and never in the future",
+      "name": "date_ordering",
+      "samples": [],
+      "violations": 0
+    },
+    {
+      "description": "Every business's active ownership adds up to exactly 100.00%",
+      "name": "ownership_reconciliation",
+      "samples": [
+        "CUS-000001: active ownership 110.00",
+        "CUS-000225: active ownership 125.00",
+        "CUS-000306: active ownership 120.00",
+        "CUS-000584: active ownership 110.00",
+        "CUS-000704: active ownership 130.00"
+      ],
+      "violations": 60
+    },
+    {
+      "description": "Customer status matches a valid audit-trail path",
+      "name": "lifecycle_transitions",
+      "samples": [
+        "CUS-000236: status APPROVED but audit trail ends at UNDER_REVIEW",
+        "CUS-000409: status APPROVED but audit trail ends at UNDER_REVIEW",
+        "CUS-000421: status APPROVED but audit trail ends at UNDER_REVIEW",
+        "CUS-000642: status APPROVED but audit trail ends at UNDER_REVIEW",
+        "CUS-000713: status APPROVED but audit trail ends at UNDER_REVIEW"
+      ],
+      "violations": 60
+    },
+    {
+      "description": "Closed reviews have closed_at, closed_by and a resolution",
+      "name": "review_closure_integrity",
+      "samples": [
+        "REV-CUS-000242-2026",
+        "REV-CUS-000247-2026",
+        "REV-CUS-000363-2026",
+        "REV-CUS-000744-2026",
+        "REV-CUS-000842-2026"
+      ],
+      "violations": 60
+    },
+    {
+      "description": "No file hash is shared by documents of different customers",
+      "name": "duplicate_documents",
+      "samples": [
+        "d403c2b989eb",
+        "22aa7d4c0423",
+        "ee1f4903f566",
+        "5ba2234e5dfd",
+        "c155cd3358d8"
+      ],
+      "violations": 100
+    },
+    {
+      "description": "Stored statuses and levels equal what the source records imply",
+      "name": "derived_value_reconciliation",
+      "samples": [
+        "DOC-CUS-000148-001: stored VERIFIED but derived EXPIRED",
+        "DOC-CUS-000153-001: stored VERIFIED but derived EXPIRED",
+        "DOC-CUS-000273-001: stored VERIFIED but derived EXPIRED",
+        "DOC-CUS-000329-002: stored VERIFIED but derived EXPIRED",
+        "DOC-CUS-000499-001: stored VERIFIED but derived EXPIRED"
+      ],
+      "violations": 60
+    },
+    {
+      "description": "Every approved customer has 100% mandatory evidence",
+      "name": "completeness_of_approved",
+      "samples": [
+        "CUS-000236: 50.0%",
+        "CUS-000409: 50.0%",
+        "CUS-000421: 50.0%",
+        "CUS-000642: 50.0%",
+        "CUS-000713: 50.0%"
+      ],
+      "violations": 60
+    },
+    {
+      "description": "Expiry alerts exist exactly for documents that should have them",
+      "name": "expiry_alert_accuracy",
+      "samples": [],
+      "violations": 0
+    }
+  ]
+}

@@ -1,9 +1,8 @@
-﻿"""Print a SHA-256 fingerprint of the generated tables in the database.
+"""SHA-256 fingerprints of the generated tables (the reproducibility evidence).
 
     python -m generator.digest
 
 Run it, regenerate, run it again: identical output means identical data.
-(Phase 4 extends this into the full reproducibility report.)
 """
 import hashlib
 import sqlite3
@@ -24,25 +23,30 @@ def table_digest(connection: sqlite3.Connection, table: str) -> tuple[int, str]:
     return count, digest.hexdigest()
 
 
+def compute_digests(connection: sqlite3.Connection) -> dict:
+    """{'tables': {name: {'rows': n, 'sha256': hex}}, 'overall': hex} for generated tables."""
+    names = [r[0] for r in connection.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name")]
+    overall = hashlib.sha256()
+    tables = {}
+    for name in names:
+        if name in REFERENCE_TABLES:
+            continue
+        count, digest = table_digest(connection, name)
+        overall.update(f"{name}:{digest}".encode("utf-8"))
+        tables[name] = {"rows": count, "sha256": digest}
+    return {"tables": tables, "overall": overall.hexdigest()}
+
+
 def main() -> None:
     url = settings.resolved_database_url
     if not url.startswith("sqlite:///"):
         raise SystemExit("digest only supports SQLite for now")
-    path = url.replace("sqlite:///", "", 1)
-    with sqlite3.connect(path) as connection:
-        tables = [
-            r[0] for r in connection.execute(
-                "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name"
-            )
-        ]
-        overall = hashlib.sha256()
-        for table in tables:
-            if table in REFERENCE_TABLES:
-                continue
-            count, digest = table_digest(connection, table)
-            overall.update(f"{table}:{digest}".encode("utf-8"))
-            print(f"{table:<26} rows={count:<6} sha256={digest[:16]}...")
-        print(f"{'OVERALL':<26} sha256={overall.hexdigest()}")
+    with sqlite3.connect(url.replace("sqlite:///", "", 1)) as connection:
+        result = compute_digests(connection)
+    for name, info in result["tables"].items():
+        print(f"{name:<26} rows={info['rows']:<6} sha256={info['sha256'][:16]}...")
+    print(f"{'OVERALL':<26} sha256={result['overall']}")
 
 
 if __name__ == "__main__":
