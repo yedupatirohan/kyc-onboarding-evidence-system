@@ -28,3 +28,5 @@ Thumbs.db
 !data/output/ground_truth.json
 !data/output/validation_report.md
 !data/output/validation_report.json
+
+*.zip
