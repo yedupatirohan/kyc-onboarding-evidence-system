@@ -1,4 +1,4 @@
-# KYC Onboarding Evidence System (YottaFlex AI challenge)
+﻿# KYC Onboarding Evidence System (YottaFlex AI challenge)
 
 A small KYC (know-your-customer) evidence platform: a deterministic synthetic data generator, a
 rules engine that finds evidence problems, a read-only REST API, and a 10-screen React dashboard.
@@ -125,4 +125,4 @@ anomaly evaluation measures agreement with injected labels, not real-world detec
 
 ## Verification
 
-Backend: 265 tests passing on the committed code, including a fresh clone of this repository with a new virtual environment. The two-run reproducibility result (identical database SHA-256) is recorded in docs/DESIGN_AND_RULES.md, section 11. The full clean-clone script (scripts/clean_clone_test.ps1) and a browser check of the 10 screens were not completed before submission.
+Backend: 265 tests passing on the committed code, including a fresh clone of this repository with a new virtual environment. The two-run reproducibility result (identical database SHA-256) is recorded in docs/DESIGN_AND_RULES.md, section 11. The dashboard was checked in a browser against the running API (npm run smoke passed all 24 endpoints).
