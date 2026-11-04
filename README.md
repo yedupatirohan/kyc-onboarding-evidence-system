@@ -122,3 +122,7 @@ anomaly evaluation measures agreement with injected labels, not real-world detec
 * `docs/DESIGN_AND_RULES.md`: schema, every rule and threshold, evaluation method, validation checks, assumptions
 * `docs/AI_DISCLOSURE.md`: how AI was used in this project
 * `PROMPT_HISTORY.md`: the prompts, recorded verbatim
+
+## Verification
+
+Backend: 265 tests passing on the committed code, including a fresh clone of this repository with a new virtual environment. The two-run reproducibility result (identical database SHA-256) is recorded in docs/DESIGN_AND_RULES.md, section 11. The full clean-clone script (scripts/clean_clone_test.ps1) and a browser check of the 10 screens were not completed before submission.
